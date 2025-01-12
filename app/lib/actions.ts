@@ -54,7 +54,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     `;
   } catch (error) {
     return {
-      message: "Database Error: Failed to Create Invoice.",
+      message: `Database Error: ${error}.`,
     };
   } finally {
     client.release();
@@ -84,7 +84,7 @@ export async function updateInvoice(id: string, formData: FormData) {
     `;
   } catch (error) {
     return {
-      message: "Database Error: Failed to Update Invoice.",
+      message: `Database Error: ${error}.`,
     };
   } finally {
     client.release();
@@ -99,7 +99,7 @@ export async function deleteInvoice(id: string) {
     await client.sql`DELETE FROM invoices WHERE id = ${id}`;
   } catch (error) {
     return {
-      message: "Database Error: Failed to Delete Invoice.",
+      message: `Database Error:${error}`,
     };
   } finally {
     client.release();
